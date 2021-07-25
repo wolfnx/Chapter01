@@ -15,3 +15,9 @@ JNIEXPORT void JNICALL
 Java_com_dodola_breakpad_MainActivity_crash(JNIEnv *env, jobject obj) {
     Crash();
 }
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_dodola_breakpad_TestActivity_crash(JNIEnv *env, jobject thiz) {
+    Crash();
+}

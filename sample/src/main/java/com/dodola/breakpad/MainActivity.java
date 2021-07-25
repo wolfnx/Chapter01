@@ -2,6 +2,7 @@ package com.dodola.breakpad;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
@@ -18,9 +19,9 @@ import androidx.core.content.ContextCompat;
 public class MainActivity extends Activity {
     private static final int WRITE_EXTERNAL_STORAGE_REQUEST_CODE = 100;
 
-    static {
-        System.loadLibrary("crash-lib");
-    }
+    //static {
+    //    System.loadLibrary("crash-lib");
+    //}
 
     private File externalReportPath;
 
@@ -30,24 +31,25 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(
-                    this,
-                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                    WRITE_EXTERNAL_STORAGE_REQUEST_CODE);
-        } else {
-            initExternalReportPath();
-        }
+       // if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+       //         != PackageManager.PERMISSION_GRANTED) {
+       //     ActivityCompat.requestPermissions(
+       //             this,
+       //             new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+       //             WRITE_EXTERNAL_STORAGE_REQUEST_CODE);
+       // } else {
+       //     initExternalReportPath();
+       // }
 
         findViewById(R.id.crash_btn)
                 .setOnClickListener(
                         new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                initBreakPad();
-                                crash();
+                                //initBreakPad();
+                                //crash();
                                 // copy core dump to sdcard
+                                startActivity(new Intent(MainActivity.this, TestActivity.class));
                             }
                         });
     }

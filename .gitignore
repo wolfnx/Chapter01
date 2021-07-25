@@ -72,3 +72,4 @@ build
 *~
 .externalNativeBuild
 .DS_Store
+.cxx/
